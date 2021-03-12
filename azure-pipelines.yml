@@ -43,14 +43,8 @@ steps:
       restoreSolution: '**/*.sln'
   
   - task: DotNetCoreCLI@2
-    displayName: 'Restore project dependencies'
-    inputs:
-      command: 'restore'
-      projects: '**/*.csproj'
-  
-  - task: DotNetCoreCLI@2
-    displayName: 'Build the project - Release'
+    displayName: 'Build the project - $(buildConfiguration)'
     inputs:
       command: 'build'
-      arguments: '--no-restore --configuration Release'
+      arguments: '--no-restore --configuration $(buildConfiguration)'
       projects: '**/*.csproj'
